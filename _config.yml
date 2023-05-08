@@ -22,22 +22,19 @@
 #THE SOFTWARE.
 
 
-# Site settings
-title: material
-email: naveen@pixelblenders.com
-description: > # this means to ignore newlines until "baseurl:"
-  Hello, I'm Naveen, a freelance front-end developer
-  and UI designer. Check out my projects on GitHub
-baseurl: "/material/" # the subpath of your site, e.g. /blog/
-url: "http://naveenshaji.github.io/material" # the base hostname & protocol for your site
-twitter_username: navvenshady
-github_username:  naveenshaji
-css: "cyan"
+
+url: "https://mountaye.github.io" # the base hostname & protocol for your site
+baseurl: "/blog" # the subpath of your site, e.g. /blog/
+title: 阿掖山：一个博客
+subtitle: MountAye | A Blog
+author: MountAye
+description: 智力活动是一种生活态度
+name: MountAye
+markdown: kramdown
+markdown_ext: "markdown,mkdown,mkdn,mkd,md"
+permalink: /articles/:title
+exclude: ['Gemfile', 'Gemfile.lock', 'Rakefile', 'UploadToGithub.Rakefile', 'README.md', 'vendor', 'LICENCE.txt']
+
+css: "blue"
 scroll-cursor: "#00BCD4"
 scroll-rail: "#0097A7"
-
-# Build settings
-markdown: kramdown
-highlighter: null #pygments
-lsi: false
-safe: false

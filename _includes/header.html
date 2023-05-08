@@ -1,22 +1,23 @@
 <header class="site-header">
-    <div class="navbar-fixed">
-        <nav class="{{ site.css }} darken-2 waves-effect waves-light">
-            <div class="nav-wrapper">
-               <div class="container">
-                <a internal href="{{ site.baseurl }}/" class="brand-logo"><i class="mdi-communication-chat"></i> {{site.title}}</a>
-                <ul id="nav-mobile" class="right side-nav">
-                    <li><a internal href="{{ site.baseurl }}/">Docs</a>
-                    </li>
-                    <li><a internal href="{{ site.baseurl }}/blog/">Blog</a>
-                    </li>
-                    <li><a internal href="{{ site.baseurl }}/about/">About</a>
-                    </li>
-                    <li><a href="http://github.com/naveenshaji/" target="_blank">GitHub</a>
-                    </li>
-                </ul>
-                <a class="button-collapse" href="#" data-activates="nav-mobile"><i class="mdi-navigation-menu"></i></a>
-            </div>
-            </div>
-        </nav>
-    </div>
+  <div class="navbar-fixed">
+    <nav class="{{ site.css }} darken-2 waves-effect waves-light">
+      <div class="nav-wrapper">
+        <div class="container">
+          <a href="{{ site.baseurl }}/" class="brand-logo">
+            <i class="mdi-communication-chat"></i>
+            {{site.title}}
+          </a>
+          <ul id="nav-mobile" class="right side-nav">
+            <li><a href="{{ site.baseurl }}/feed.xml">RSS</a></li>
+            <li><a href="{{ site.baseurl }}/History/">历史</a></li>
+            <li><a href="{{ site.baseurl }}/Topics/">分类</a></li>
+            <li><a href="{{ site.baseurl }}/Comments/">留言</a></li>
+            <li><a href="{{ site.baseurl }}/Links/">友链</a></li>
+            <li><a href="{{ site.baseurl }}/About/">关于</a></li>
+          </ul>
+          <a class="button-collapse" href="#" data-activates="nav-mobile"><i class="mdi-navigation-menu"></i></a>
+        </div>
+      </div>
+    </nav>
+  </div>
 </header>

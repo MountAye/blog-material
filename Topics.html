@@ -1,0 +1,60 @@
+---
+layout: default 
+permalink: /Topics/
+title: 话题分类
+---
+
+{% assign category = site.data.category %}
+{% assign length = category | size %}
+{% assign   len1 = length | plus: 1 | divided_by: 2 %}
+{% assign   len2 = length | divided_by: 2 %}
+
+<div class="row">
+  <h1><br>话题分类<br></h1>
+  <div class="container-fluid">
+    <div class="col s12 m6">
+      <ul>
+        {% for i in (1..len1) %}
+          {% assign idx = i | times: 2 | minus:2 %}
+          {% assign cate = category[idx] %}
+          <li class="card advantage {{site.css}} white-text darken-1 waves-effect waves-light">
+            <h4>.{{ cate.ext }} | {{ cate.name }}</h4>
+            <ul>
+              {% for post in site.posts %}
+                {% if post.keywords contains cate.ext %}
+                  <li>
+                    <a href="{{ post.url | prepend:site.baseurl }}">
+                      {{ post.title }}
+                    </a>
+                  </li>
+                {% endif %}
+              {% endfor %} 
+            </ul>
+          </li>          
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="col s12 m6">
+      <ul>
+        {% for i in (1..len2) %}
+          {% assign idx = i | times: 2 | minus: 1 %}
+          {% assign cate = category[idx] %}
+          <li class="card advantage {{site.css}} white-text darken-1 waves-effect waves-light">
+            <h4>.{{ cate.ext }} | {{ cate.name }}</h4>
+            <ul>
+              {% for post in site.posts %}
+                {% if post.keywords contains cate.ext %}
+                  <li>
+                    <a href="{{ post.url | prepend:site.baseurl }}">
+                      {{ post.title }}
+                    </a>
+                  </li>
+                {% endif %}
+              {% endfor %} 
+            </ul>
+          </li>          
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>

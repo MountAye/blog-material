@@ -3,14 +3,68 @@
     <meta name="viewport" content="width=device-width initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
-    <meta name="description" content="{{ site.description }}">
-    <meta name="viewport" content="width=device-width, initial-scale=0.7, user-scalable=0">
+    <!-- start of SEO by hand copying plugin results on Feb 5, 2022 -->
+    <title>{{ page.title }} | {{ site.title }}</title>
+    <meta name="generator" content="Jekyll" />
+    <meta property="og:title" content="{{ page.title }}" />
+    {% if page.author %}
+      {% assign author = page.author %}  
+    {% else %}
+      {% assign author = site.author %}  
+    {% endif %}
+    {% if page.excerpt %}
+      {% assign description = page.excerpt %}
+    {% else %}
+      {% assign description = site.description %}
+    {% endif %}
+    {% if page.modified %}
+      {% assign modified = page.modified %}
+    {% else %}
+      {% assign modified = page.date %}
+    {% endif %}
+    {% if page.permalink %}
+      {% assign fulllink = page.permalink | prepend: site.baseurl | prepend: site.url %}
+      <script type="application/ld+json">
+        {"headline":"{{ page.title }}","url":"{{ fulllink }}","@type":"WebPage","description":"{{ description }}","@context":"https://schema.org"}
+      </script> 
+    {% else %}
+      {% assign fulllink = page.url | prepend: site.baseurl | prepend: site.url %}
+        <meta property="og:type" content="article" />
+        <meta property="article:published_time" content="{{ page.date }}" />
+        <meta property="article:modified_time" content="{{ modified }}" />
+        <script type="application/ld+json">
+            {"headline":"{{ page.title }}","dateModified":"{{ modified }}","datePublished":"{{page.date}},"url":"{{ fulllink }}","mainEntityOfPage":{"@type":"WebPage","@id":"{{ fulllink }}"},"author":{"@type":"Person","name":"{{ author }}"},"@type":"BlogPosting","description":"{{ description }}","@context":"https://schema.org"}
+        </script> 
+    {% endif %}
+
+    <meta property="og:locale" content="zh-cn" />
+    <meta name="author" content="{{ author }}" />
+    <meta name="description" content="{{ description }}" />
+    <meta property="og:description" content="{{ description }}" />
+    <link rel="canonical" href="{{ fulllink }}" />
+    <meta property="og:url" content="{{ fulllink }}" />
+    <meta name="og:site_name" content="{{ site.title }}" /> 
+    <meta name="twitter:card" content="summary" />
+    <meta property="twitter:title" content="{{ page.title }}" />
+    <!-- end of SEO -->
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3X9B5LN42L"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-3X9B5LN42L');
+    </script>
+    <!-- end of Google Analytics -->
+    <meta name="viewport" content="width=device-width, initial-scale=0.9, user-scalable=0">
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="{{ site.baseurl }}/css/materialize.min.css" media="screen,projection" />
     <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
-    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
-
+    <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
     <script type="text/javascript" src="{{ site.baseurl }}/js/jquery.min.js"></script>
     <script src="{{ site.baseurl }}/js/jquery.nicescroll.min.js"></script>
     <script src="{{ site.baseurl }}/js/jquery.nicescroll.plus.js"></script>
@@ -20,4 +74,6 @@
     <script type="text/javascript" src="{{ site.baseurl }}/js/modernizr.js"></script>
     <script type="text/javascript" src="{{ site.baseurl }}/js/materialize.min.js"></script>
     <script type="text/javascript" src="{{ site.baseurl }}/js/main.js"></script>
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | prepend: site.baseurl }}" />
+    <link rel="shortcut icon" href="{{'/assets/img/favicon.ico' | prepend: site.baseurl }}" >
 </head>

@@ -1,0 +1,33 @@
+---
+layout: default 
+permalink: /Links/
+title: 友情链接
+---
+
+<div class="container-fluid" style="margin-top:20px;">
+  {% for link in site.data.links %}
+  <div class="row">
+    <div class="blog col s1">
+      <img src="{{ link.avatar }}" width="100" class="card">
+    </div>    
+    <div class="blog col s11">
+      <div id="{{ link.id }}" class="container-fluid paper card {{ site.css }} z-depth-2 waves-effect waves-light">
+        <a href="#{{ link.id }}">  
+          <div class="card-action {{site.css}} darken-2 white-text">
+            <div class="card-title"><h4>{{ link.name }}</h4></div>
+            <p>{{ link.signature }}</p>
+          </div>
+        </a>
+        <div class="card-content {{ site.css }} darken-2 white-text">
+           <p>{{ link.introduction }}</p>
+        </div>
+        <a href="{{ link.url }}" target="_blank">
+          <div class="card-action {{site.css}} white-text">
+            {{ link.url }}      
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>

@@ -1,0 +1,25 @@
+---
+layout: default 
+permalink: /History/
+title: 文章合集
+---
+<div class="" style="margin-top:20px;">
+  {% for post in site.posts %}
+    <div class="scroll-1 blog">
+      <a href="{{ post.url | prepend:site.baseurl }}">  
+        <div class="container-fluid paper card {{ site.css }} darken-2 z-depth-2 waves-effect waves-light">
+          {% if post.cover %} 
+            <div class="cover z-depth-1" style="background-image: url('{{ post.cover | prepend: site:baseurl }}');"></div>
+          {% endif %}
+          <div class="card-action white-text">
+            <div class="card-title"><h4>{{ post.title }}</h4></div>
+            <p>{{ post.date | date: "%b %-d, %Y" }}</p>
+          </div>
+          <div class="card-content {{ site.css }} white-text">
+            <p>{{ post.excerpt | strip_html | truncatewords: 50}}</p>
+          </div>
+        </div>
+      </a>
+    </div>
+  {% endfor %}
+</div>
